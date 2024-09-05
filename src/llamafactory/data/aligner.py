@@ -208,6 +208,11 @@ def convert_sharegpt(
         logger.warning("Skipping this abnormal example.")
         prompt, response = [], []
 
+        # 在这里添加 system 消息的截断逻辑
+        # huiyu code added here
+        if data_args.system_cutoff_len is not None:
+            system = system[:data_args.system_cutoff_len]
+
     convert_images = partial(_convert_images, dataset_attr=dataset_attr, data_args=data_args)
     convert_videos = partial(_convert_videos, dataset_attr=dataset_attr, data_args=data_args)
     output = {

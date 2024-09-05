@@ -114,6 +114,13 @@ class DataArguments:
         metadata={"help": "Path to save or load the tokenized datasets."},
     )
 
+
+    # huiyu code added here
+    system_cutoff_len: Optional[int] = field(
+        default=None,
+        metadata={"help": "The maximum number of tokens for the system message. If exceeded, the system message will be truncated."},
+    )
+
     def __post_init__(self):
         def split_arg(arg):
             if isinstance(arg, str):
